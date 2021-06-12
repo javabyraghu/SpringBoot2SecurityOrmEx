@@ -1,0 +1,92 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #55552b;">
+  <a class="navbar-brand text-white" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link text-white"  th:href="@{/user/login}">LOGIN </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" th:href="@{/user/register}">REGISTER</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          OPERATIONS
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/user/login}">Login</a>
+          <a class="dropdown-item" th:href="@{/user/register}">Register</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h3>USER REGISTER PAGE!</h3>
+			</div>
+			<div class="card-body">
+				<form th:action="@{/user/save}" method="POST">
+				
+					<div class="row">
+						<div class="col-3">
+							<label>NAME</label>
+						</div>
+						<div class="col-6">
+							<input type="text" name="userName" class="form-control" required/>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-3">
+							<label>EMAIL</label>
+						</div>
+						<div class="col-6">
+							<input type="text" name="userMail" class="form-control" required/>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-3">
+							<label>PASS</label>
+						</div>
+						<div class="col-6">
+							<input type="password" name="userPwd" class="form-control" required/>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-3">
+							<label>ROLES</label>
+						</div>
+						<div class="col-6">
+							 <input type="checkbox" name="userRoles" value="ADMIN"/> ADMIN
+				 			 <input type="checkbox" name="userRoles" value="EMPLOYEE"/> EMPLOYEE
+						</div>
+					</div>
+
+				  <input type="submit" value="REGISTER" class="btn btn-success"/>
+				</form>
+			</div>
+			<div th:if="${message!=null}" class="card-footer bg-info text-white">
+				<div th:text="${message}"></div>
+			
+			</div>
+		</div>
+	</div>	
+		
+	</body>
+</html>
